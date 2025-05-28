@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tripple Seven Timber Tech</title>
+  <link rel="icon" type="image/png" href="img/logo tab page.png" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      background-color: whitesmoke;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .navbar {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      background-color: rgba(243, 238, 238, 0.9); /* White with 50% transparency */
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 40px; /* space between logo and text */
+    }
+
+    .logo-img {
+      height: auto;
+      max-height: 45px;
+      width: auto;
+      transform: scale(2); /* scales the image up 20% visually */
+    }
+
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background-image: url('img/Tripple seven images/construction-site_53876-31720.jpg'); /* Use your background image */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.15); /* Light overlay so bg is visible */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative; /* For watermark positioning */
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .watermark-logo {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .watermark-logo img {
+      max-width: 200px;
+      height: auto;
+    }
+    
+    
+.container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: left;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .headline {
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: #000;
+      margin-bottom: 30px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      font-size: 0.95rem;
+      color: #f89c1e;
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgb(207, 207, 207);
+      margin: 50px auto;
+      width: 90%;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .container-pictures {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .half {
+      position: relative;
+      flex: 1;
+      cursor: pointer;
+      height: 500px;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-family: sans-serif;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .text {
+      z-index: 1;
+    }
+
+
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .grid-item {
+      position: relative;
+      flex: 1 1 50%; /* Two per row */
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      min-width: 300px;
+    }
+    .full-width {
+      flex: 1 1 100%; /* Full width */
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .text {
+      position: absolute;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-transform: uppercase;
+      text-align: center;
+      z-index: 1;
+      padding: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+  background-color: #f1a943;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.footer-socials a {
+  text-decoration: none;
+  font-size: 28px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+  transform: scale(1.2);
+}
+
+/* Icon Colors */
+.footer-socials a[title="Facebook"] i {
+  color: #1877f2;
+}
+
+.footer-socials a[title="Twitter"] i {
+  color: #1da1f2;
+}
+
+.footer-socials a[title="Instagram"] i {
+  color: #e1306c;
+}
+
+.footer-socials a[title="Youtube"] i {
+  color: #ff0000;
+}
+
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0; /* reduced from 15px */
+}
+
+.footer-links a {
+    margin: 0 10px; /* reduced spacing between links */
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.85rem; /* optional: slightly smaller font */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 10px; /* reduced from 15px */
+    font-size: 0.8rem; /* smaller text */
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .contact-location-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .location-box,
+  .contact-box {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+    display: flex;
+  }
+
+  .logo-img {
+    transform: scale(1.5);
+  }
+
+  .contact-box p,
+  .location-box p {
+    font-size: 0.95rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="img/logo bg.png" alt="Logo" class="logo-img" />Tripple Seven Timber Tech
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <div class="hero-content">
+        <h1> Services To Fit Your Needs</h1>
+      </div>
+      <div class="watermark-logo">
+        <img src="img/logo bg.png" alt="Watermark Logo" />
+      </div>
+    </div>
+  </section>
+
+  
+  
+  <div class="container">
+    <h2 class="headline">Our Services </h2>
+    <p class="description">
+        Our company offers a variety of services to meet your project’s needs, to take you from collaboration meetings all the way to ribbon-cutting and beyond. We believe that every project is unique, and can customize our approach to fit your particular project. While we are at the forefront of and specialize in design-build, we are very familiar with a number of delivery methods and are confident we can find the process that will best help you meet your goals.
+    </p>
+    
+  </div>
+  
+  <hr class="divider">
+
+  <div class="grid-container">
+    <a href="serv Deliverymethods.html" class="grid-item" style="background-image: url('img/IMG-20241021-WA0154.jpg');">
+      <div class="overlay"></div>
+      <div class="text">Delivery Methods</div>
+    </a>
+    <a href="serv preconstruction.html" class="grid-item" style="background-image: url('img/IMG-20241021-WA0152.jpg');">
+      <div class="overlay"></div>
+      <div class="text">Preconstruction</div>
+    </a>
+    <a href="serv construction.html" class="grid-item full-width" style="background-image: url('img/Tripple seven images/TRT2.jpg');">
+      <div class="overlay"></div>
+      <div class="text">Construction</div>
+    </a>
+    <a href="serv design.html" class="grid-item" style="background-image: url('img/Tripple seven images/20240718_190342.jpg');">
+      <div class="overlay"></div>
+      <div class="text">Design Management</div>
+    </a>
+    <a href="serv safety.html" class="grid-item" style="background-image: url('img/Tripple seven images/sld2.png');">
+      <div class="overlay"></div>
+      <div class="text">Safety</div>
+    </a>
+  </div>
+
+  <footer>
+    <div class="container">
+        <div class="footer-content">
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/trippleseventech" target="_blank" title="Facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" title="Twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/trippleseven_xii.0/" target="_blank" title="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" title="Youtube"><i class="bx bxl-youtube"></i></a>
+        </div>
+            <div class="footer-links">
+                <a href="#">CONTACT</a>
+                <a href="#">PROJECTS</a>
+                <a href="#">TERMS OF SERVICE</a>
+                <a href="#">PRIVACY POLICY</a>
+            </div>
+            <div class="copyright">
+                ©2025 Tripple Seven Timber Tech Construction Company, Inc.  All Rights Reserved
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

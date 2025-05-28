@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tripple Seven Timber Tech</title>
+  <link rel="icon" type="image/png" href="img/logo tab page.png" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      background-color: whitesmoke;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .navbar {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      background-color: rgba(243, 238, 238, 0.7); /* White with 50% transparency */
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 40px; /* space between logo and text */
+    }
+
+    .logo-img {
+      height: auto;
+      max-height: 45px;
+      width: auto;
+      transform: scale(2); /* scales the image up 20% visually */
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background-image: url('img/Tripple seven images/IMG-20241111-WA0555.jpg'); /* Use your background image */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.15); /* Light overlay so bg is visible */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative; /* For watermark positioning */
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .watermark-logo {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .watermark-logo img {
+      max-width: 200px;
+      height: auto;
+    }
+    .footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+  background-color: #f1a943;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.footer-socials a {
+  text-decoration: none;
+  font-size: 28px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+  transform: scale(1.2);
+}
+
+/* Icon Colors */
+.footer-socials a[title="Facebook"] i {
+  color: #1877f2;
+}
+
+.footer-socials a[title="Twitter"] i {
+  color: #1da1f2;
+}
+
+.footer-socials a[title="Instagram"] i {
+  color: #e1306c;
+}
+
+.footer-socials a[title="Youtube"] i {
+  color: #ff0000;
+}
+
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0; /* reduced from 15px */
+}
+
+.footer-links a {
+    margin: 0 10px; /* reduced spacing between links */
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.85rem; /* optional: slightly smaller font */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 10px; /* reduced from 15px */
+    font-size: 0.8rem; /* smaller text */
+    color: white;
+}
+
+.contact-location-section {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-location-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.location-box,
+.contact-box {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #222;
+  border-bottom: 2px solid #f89c1e;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.contact-box p,
+.location-box p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-box i,
+.location-box i {
+  font-size: 1.2rem;
+  color: #f89c1e;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .contact-location-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .location-box,
+  .contact-box {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+    display: flex;
+  }
+
+  .logo-img {
+    transform: scale(1.5);
+  }
+
+  .contact-box p,
+  .location-box p {
+    font-size: 0.95rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="img/logo bg.png" alt="Logo" class="logo-img" />Tripple Seven Timber Tech
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="services page.html">Services</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <div class="hero-content">
+        <h1>HOW CAN WE HELP?</h1>
+      </div>
+      <div class="watermark-logo">
+        <img src="img/logo bg.png" alt="Watermark Logo" />
+      </div>
+    </div>
+  </section>
+
+
+<!-- Boxicons CDN -->
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<section class="contact-location-section">
+  <div class="contact-location-container">
+    
+    <!-- Location (Left Column) -->
+    <div class="location-box">
+      <h3 class="section-title">Our Location</h3>
+      <p><i class='bx bx-map'></i> Tripple Seven Timber Tech.</p>
+      <p>27 Loughborough Rd, Marlborough</p>
+      <p>Harare</p>
+      <p><i class='bx bx-phone'></i> (619) 233-7900</p>
+    </div>
+
+    <!-- Contact Info (Right Column) -->
+    <div class="contact-box">
+      <h3 class="section-title">Contact Details</h3>
+      <p><i class='bx bx-phone-call'></i> +263 772 225872<i class='bx bxl-whatsapp'></i></p>
+      <p><i class='bx bx-phone-call'></i> +263 </p>
+      <p><i class='bx bx-phone-call'></i> +263 </p>
+      <p><i class='bx bxl-gmail'></i> tripleviitec@gmail.com</p>
+      <p><i class='bx bxl-instagram'></i> trippleseven_xii.0</p>
+      <p><i class='bx bxl-facebook'></i> Tripple Seven Timber Tech </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/trippleseventech" target="_blank" title="Facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" title="Twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/trippleseven_xii.0/" target="_blank" title="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" title="Youtube"><i class="bx bxl-youtube"></i></a>
+        </div>
+            <div class="footer-links">
+                <a href="#">CONTACT</a>
+                <a href="#">PROJECTS</a>
+                <a href="#">TERMS OF SERVICE</a>
+                <a href="#">PRIVACY POLICY</a>
+            </div>
+            <div class="copyright">
+                ©2025 Tripple Seven Timber Tech Construction Company, Inc.  All Rights Reserved
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+  function openLightbox(imgElement) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = imgElement.src;
+    lightbox.style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>  

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tripple Seven Timber Tech</title>
+  <link rel="icon" type="image/png" href="img/logo tab page.png" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      background-color: whitesmoke;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .navbar {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      background-color: rgba(243, 238, 238, 0.7); /* White with 50% transparency */
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 40px; /* space between logo and text */
+    }
+
+    .logo-img {
+      height: auto;
+      max-height: 45px;
+      width: auto;
+      transform: scale(2); /* scales the image up 20% visually */
+    }
+
+    .section {
+  padding-top: 120px; /* Adjust if needed */
+}
+
+    .get-in-touch-btn {
+  padding: 16px 40px;
+  background-color: #000000; /* black */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.get-in-touch-btn:hover {
+  background-color: #111111; /* dark gray on hover */
+}
+ 
+.box-button {
+      background-color: #000000;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+  justify-content: center;
+  align-items: center; /* Optional: vertically centers if there's height */
+      
+    }
+    
+    .button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional: vertically centers if there's height */
+}
+
+    .box-button:hover {
+      background-color: rgb(19, 18, 18);
+    }
+    
+    .divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 50px auto;
+  width: 90%;
+}
+
+.container {
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 0 20px;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.headline {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+
+h2.headline {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: left;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .headline {
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: #000;
+      margin-bottom: 30px;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+
+footer {
+    background-color: #f1a943;
+    padding: 1px 0; /* reduced from 30px */
+    margin-top: 10px; /* reduced from 50px */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+  background-color: #f1a943;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.footer-socials a {
+  text-decoration: none;
+  font-size: 28px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+  transform: scale(1.2);
+}
+
+/* Icon Colors */
+.footer-socials a[title="Facebook"] i {
+  color: #1877f2;
+}
+
+.footer-socials a[title="Twitter"] i {
+  color: #1da1f2;
+}
+
+.footer-socials a[title="Instagram"] i {
+  color: #e1306c;
+}
+
+.footer-socials a[title="Youtube"] i {
+  color: #ff0000;
+}
+
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0; /* reduced from 15px */
+}
+
+.footer-links a {
+    margin: 0 10px; /* reduced spacing between links */
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.85rem; /* optional: slightly smaller font */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 10px; /* reduced from 15px */
+    font-size: 0.8rem; /* smaller text */
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .contact-location-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .location-box,
+  .contact-box {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+    display: flex;
+  }
+
+  .logo-img {
+    transform: scale(1.5);
+  }
+
+  .contact-box p,
+  .location-box p {
+    font-size: 0.95rem;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+  <!-- Navbar -->
+<header class="navbar">
+  <div class="logo">
+    <img src="img/logo bg.png" alt="Logo" class="logo-img" />Tripple Seven Timber Tech
+  </div>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="services page.html">Services</a></li>
+      <li><a href="contacts.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section"></section>
+
+<div class="container">
+    <h1 class="headline">
+        Preconstruction
+    </h1>
+    <p class="description">At Tripple Seven Timber Tech, the Preconstruction Phase is all about laying a solid foundation for project success. Our team collaborates closely with clients, architects, and consultants to manage budgets, evaluate construction methods, and assess material availability from the outset. By staying actively involved during this phase, we ensure that every decision supports the project's objectives and long-term value.
+
+        We also proactively manage timelines, ensuring that all construction documents are delivered on schedule. Through a transparent reporting system, we provide ongoing updates on costs, scheduling, and design coordination—helping clients make informed, timely decisions.</p>
+
+  </div>
+
+  <div class="container">
+    <h1 class="headline">Site Evaluation</h1>
+    <ul class="description">
+      <li>Review boundary and title documentation, and verify on-site property lines</li>
+      <li>Assess geotechnical reports and flag hidden cost factors</li>
+      <li>Confirm availability and proximity of utility connections (water, sewer, electricity)</li>
+      <li>Identify flood risks and drainage issues</li>
+      <li>Verify zoning regulations and environmental limitations</li>
+      <li>Flag off-site infrastructure upgrades required for the project</li>
+    </ul>
+  </div>
+  
+  <hr class="divider">
+  
+  <div class="container">
+    <h1 class="headline">Cost Management & Estimating</h1>
+    <ul class="description">
+      <li>Deliver value-engineering alternatives to optimize cost without compromising quality</li>
+      <li>Recommend practical material and construction system substitutions</li>
+      <li>Develop preliminary feasibility budgets</li>
+      <li>Identify bonding or guarantee requirements</li>
+      <li>Evaluate life-cycle costs for long-term savings</li>
+      <li>Provide initial cash flow projections and cost checkpoints</li>
+    </ul>
+  </div>
+  
+  <hr class="divider">
+  
+  <div class="container">
+    <h1 class="headline">Design Development Phase</h1>
+    <ul class="description">
+      <li>Coordinate closely with design professionals and the client team</li>
+      <li>Review plans for constructability and regulatory compliance</li>
+      <li>Recommend cost-saving solutions using practical and locally available materials</li>
+      <li>Resolve spatial and design conflicts through early coordination</li>
+      <li>Provide visual aids to help stakeholders and site crews understand the scope of work</li>
+      <li>Assist with sequencing plans and installation timelines to reduce on-site delays</li>
+      <li>Minimize the need for RFIs through clear documentation and proactive communication</li>
+    </ul>
+  </div>
+  
+  <hr class="divider">
+  
+  <div class="container">
+    <h1 class="headline">Time Management & Scheduling</h1>
+    <ul class="description">
+      <li>Establish a realistic milestone schedule</li>
+      <li>Identify approval and permitting requirements early on</li>
+      <li>Develop a phasing plan aligned with construction logistics</li>
+      <li>Build a master project schedule tailored to delivery goals</li>
+      <li>Identify critical long-lead materials and client-provided items for advanced coordination</li>
+    </ul>
+  </div>
+  
+  <hr class="divider">
+  
+  <div class="container">
+    <h1 class="headline">Construction Document Phase</h1>
+    <ul class="description">
+      <li>Assign experienced field personnel to manage on-site execution</li>
+      <li>Set up document tracking systems for submittals and approvals</li>
+      <li>Continue to review plans to catch potential discrepancies</li>
+      <li>Prepare and implement a quality control plan in partnership with the architect and client</li>
+    </ul>
+  </div>
+  
+  <hr class="divider">
+  
+
+
+<div class="button-wrapper">
+    <button onclick="location.href='services page.html'" class="box-button">Back to services</button>
+</div>
+
+</section>
+  
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/trippleseventech" target="_blank" title="Facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" title="Twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/trippleseven_xii.0/" target="_blank" title="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" title="Youtube"><i class="bx bxl-youtube"></i></a>
+        </div>
+            <div class="footer-links">
+                <a href="#">CONTACT</a>
+                <a href="#">PROJECTS</a>
+                <a href="#">TERMS OF SERVICE</a>
+                <a href="#">PRIVACY POLICY</a>
+            </div>
+            <div class="copyright">
+                ©2025 Tripple Seven Timber Tech Construction Company, Inc.  All Rights Reserved
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
