@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Tripple Seven Timber Tech</title>
+  <link rel="icon" type="image/png" href="img/logo tab page.png"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', serif; background-color: whitesmoke; color: #333; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px;
+      background-color: rgba(243,238,238,0.95);
+      z-index: 100;
+    }
+    .logo { display: flex; align-items: center; gap: 20px; font-weight: bold; font-size: 1.5rem; }
+    .logo img { max-height: 40px; }
+    .navbar ul { display: flex; gap: 25px; list-style: none; }
+    .navbar ul li a:hover { color: #f89c1e; }
+
+    /* Hero */
+    .hero {
+      height: 50vh;
+      background: url('img/Tripple seven images/TRT2.jpg') center/cover no-repeat;
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+    }
+    .hero h1 { position: relative; color: #fff; font-size: 3rem; text-align: center; z-index: 1; }
+
+    /* Projects Section */
+    .projects-section { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+    .projects-section .section-title {
+      text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #222;
+    }
+
+    /* Swiper for Projects */
+    .swiper-slide { width: 300px; } 
+    .project-card {
+      background: #fff; border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      overflow: hidden; cursor: pointer; transition: transform 0.3s;
+    }
+    .project-card img { width: 100%; height: 220px; object-fit: cover; }
+    .project-card:hover { transform: scale(1.05); }
+    .project-card h3 { padding: 15px; text-align: center; }
+
+    /* Show More/Less Button */
+    .show-more-container { text-align: center; margin-top: 20px; }
+    #showMoreBtn {
+      background: none; border: 2px solid #333;
+      padding: 10px 20px; border-radius: 30px;
+      cursor: pointer; transition: 0.3s;
+    }
+    #showMoreBtn:hover { background: #333; color: #fff; }
+
+    /* Modal */
+    .modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center; align-items: center;
+      z-index: 999;
+    }
+    .modal-content {
+      background: #fff; border-radius: 20px; padding: 20px;
+      max-width: 800px; width: 90%; position: relative;
+    }
+    .modal-content img { width: 100%; border-radius: 15px; }
+    .close {
+      position: absolute; top: 10px; right: 20px;
+      font-size: 2rem; cursor: pointer;
+    }
+    .project-description { margin-top: 10px; font-size: 0.95rem; color: #444; }
+    .project-tags { margin-top: 5px; font-size: 0.85rem; color: #666; }
+
+    /* Modal Thumbnails */
+    .modal-thumbs {
+      display: flex; justify-content: center; gap: 10px; margin-top: 10px;
+    }
+    .modal-thumbs img {
+      width: 60px; height: 40px; object-fit: cover; cursor: pointer;
+      border: 2px solid transparent; border-radius: 5px;
+      transition: 0.3s;
+    }
+    .modal-thumbs img.active { border-color: #f89c1e; }
+
+    /* Smooth Show More/Less */
+    #allProjectsSwiper, #allProjectsBanner {
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      overflow: hidden;
+    }
+
+    /* Responsive thumbnail row inside modal */
+.modal-thumbs {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 10px;
+  justify-content: center;
+  scroll-behavior: smooth;
+}
+
+.modal-thumbs img {
+  width: 30px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.modal-thumbs img.active {
+  border: 2px solid #28a745;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.modal-thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.modal-thumbs::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+.modal-thumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-top: 10px;
+  padding-bottom: 5px;
+}
+
+.thumb-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.thumb-wrapper img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.thumb-wrapper img.active {
+  border-color: #007bff;
+}
+
+.thumb-close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-thumbs img {
+    width: 65px;
+    height: 50px;
+  }
+}
+
+
+    /* Footer */
+    footer { background: #f1a943; padding: 20px 0; margin-top: 40px; }
+    .footer-content { text-align: center; }
+    .footer-links a { margin: 0 12px; text-decoration: none; color: #333; font-weight: bold; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-socials {
+      margin: 15px 0; display: flex; justify-content: center; gap: 20px;
+    }
+    .footer-socials a { font-size: 28px; }
+    .footer-socials a[title="Facebook"] i { color: #1877f2; }
+    .footer-socials a[title="Twitter"] i { color: #1da1f2; }
+    .footer-socials a[title="Instagram"] i { color: #e1306c; }
+    .footer-socials a[title="Youtube"] i { color: #ff0000; }
+    .copyright { font-size: 0.8rem; color: white; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="img/logo bg.png" alt="Logo"/> Tripple Seven Timber Tech
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Our Portfolio</h1>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <h2 class="section-title">Recent Completed Projects</h2>
+
+    <!-- Recent Projects Swiper -->
+    <div class="swiper recentSwiper">
+      <div class="swiper-wrapper" id="recentWrapper"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Show More Button -->
+    <div class="show-more-container">
+      <button id="showMoreBtn">↓ Show All Projects</button>
+    </div>
+
+    <!-- All Projects Banner -->
+    <div id="allProjectsBanner" style="display:none; text-align:center; margin-top:40px;">
+      <h2 class="section-title">All Projects</h2>
+    </div>
+
+    <!-- All Projects Swiper -->
+    <div class="swiper allProjectsSwiper" id="allProjectsSwiper" style="display:none;">
+      <div class="swiper-wrapper" id="allProjectsWrapper"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="projectTitle"></h2>
+      <p id="projectDesc" class="project-description"></p>
+      <p id="projectTags" class="project-tags"></p>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="swiperWrapper"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/trippleseventech" target="_blank" title="Facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://x.com/" target="_blank" title="Twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.instagram.com/trippleseven_xii.0/" target="_blank" title="Instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.youtube.com/" target="_blank" title="Youtube"><i class="bx bxl-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="contacts.html">Contact</a>
+        <a href="portfolio.html">Projects</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+      <div class="copyright">
+        ©2025 Tripple Seven Timber Tech Construction Company, Inc. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  const projects = [
+    { 
+      title: "Residential Timber Homes",
+      images: [
+        "img/Tripple seven images/TRT.jpg",
+        "img/Tripple seven images/TRT2.jpg",
+        "img/Tripple seven images/TRT3.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0151.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0153.jpg"
+      ],
+      desc: "Elegant and durable prefab timber houses built for modern residential living.",
+      tags: "Category: Housing | Material: Timber | Location: Harare"
+    },
+    { 
+      title: "Office Renovation Project",
+      images: [
+        "img/Tripple seven images/IMG-20241021-WA0151.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0152.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0153.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0154.jpg",
+        "img/Tripple seven images/TRT2.jpg"
+      ],
+      desc: "Renovation and design of office spaces using modern eco-friendly wood structures.",
+      tags: "Category: Commercial | Location: Highlands, Harare"
+    },
+    { 
+      title: "Workshop and Construction Area",
+      images: [
+        "img/Tripple seven images/IMG-20241111-WA0551.jpg",
+        "img/Tripple seven images/IMG-20241111-WA0555.jpg",
+        "img/Tripple seven images/IMG-20241111-WA0556.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0152.jpg",
+        "img/Tripple seven images/IMG-20241021-WA0153.jpg"
+      ],
+      desc: "Our main workshop where precision timber processing and carpentry excellence come to life.",
+      tags: "Category: Industrial | Location: Harare"
+    },
+    { 
+      title: "Company Visuals & Branding",
+      images: [
+        "img/Tripple seven images/contact-img.png",
+        "img/Tripple seven images/about-img-2.png",
+        "img/Tripple seven images/contact-img.jpg",
+        "img/Tripple seven images/close-up-photo-cutting-wood-with-fretsaw_176420-4786.jpg",
+        "img/Tripple seven images/Screenshot 2025-05-25 090413-fotor-202505259818.png"
+      ],
+      desc: "Tripple Seven Timber Tech branding, visual identity, and online media assets.",
+      tags: "Category: Branding | Year: 2025"
+    }
+  ];
+
+  const recentWrapper = document.getElementById("recentWrapper");
+  const allProjectsWrapper = document.getElementById("allProjectsWrapper");
+  const showMoreBtn = document.getElementById("showMoreBtn");
+  const allProjectsBanner = document.getElementById("allProjectsBanner");
+  const allProjectsSwiperDiv = document.getElementById("allProjectsSwiper");
+
+  let showAll = false;
+
+  function renderRecentProjects() {
+    recentWrapper.innerHTML = "";
+    projects.slice(0,3).forEach((p,i) => {
+      recentWrapper.innerHTML += `
+        <div class="swiper-slide project-card" onclick="openProject(${i})">
+          <img src="${p.images[0]}" alt="${p.title}" />
+          <h3>${p.title}</h3>
+        </div>
+      `;
+    });
+  }
+
+  function renderAllProjects() {
+    allProjectsWrapper.innerHTML = "";
+    projects.forEach((p,i)=>{
+      allProjectsWrapper.innerHTML += `
+        <div class="swiper-slide project-card" onclick="openProject(${i})">
+          <img src="${p.images[0]}" alt="${p.title}" />
+          <h3>${p.title}</h3>
+        </div>
+      `;
+    });
+  }
+
+  renderRecentProjects();
+  renderAllProjects();
+
+  const recentSwiper = new Swiper('.recentSwiper', {
+    slidesPerView: 3,
+    spaceBetween: 25,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 0:{slidesPerView:1}, 768:{slidesPerView:2}, 1024:{slidesPerView:3} },
+    freeMode: true,
+  });
+
+  const allProjectsSwiper = new Swiper('.allProjectsSwiper', {
+    slidesPerView: 3,
+    spaceBetween: 25,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 0:{slidesPerView:1}, 768:{slidesPerView:2}, 1024:{slidesPerView:3} },
+    freeMode: true,
+  });
+
+  showMoreBtn.addEventListener("click", ()=>{
+    showAll = !showAll;
+    if(showAll){
+      allProjectsBanner.style.display="block";
+      allProjectsSwiperDiv.style.display="block";
+      showMoreBtn.textContent = "↑ Show Less Projects";
+    } else {
+      allProjectsBanner.style.display="none";
+      allProjectsSwiperDiv.style.display="none";
+      showMoreBtn.textContent = "↓ Show All Projects";
+    }
+    allProjectsSwiper.update();
+  });
+
+  let swiper;
+  function openProject(index){
+    const project = projects[index];
+    document.getElementById("projectTitle").innerText = project.title;
+    document.getElementById("projectDesc").innerText = project.desc;
+    document.getElementById("projectTags").innerText = project.tags;
+
+    const wrapper = document.getElementById("swiperWrapper");
+    wrapper.innerHTML = project.images.map(img => `<div class="swiper-slide"><img src="${img}" alt=""></div>`).join("");
+
+    // Remove old thumbnails
+    const oldThumbs = document.querySelector('.modal-thumbs');
+    if(oldThumbs) oldThumbs.remove();
+
+    // Create new thumbnails
+    const thumbsHTML = document.createElement('div');
+    thumbsHTML.className = 'modal-thumbs';
+    
+    project.images.forEach((img,i)=>{
+        const thumb = document.createElement('img');
+        thumb.src = img;
+        thumb.onclick = () => thumbClick(i);
+        thumb.id = `thumb${i}`;
+        thumbsHTML.appendChild(thumb);
+    });
+
+    wrapper.parentNode.appendChild(thumbsHTML);
+
+    // Show modal
+    document.getElementById("projectModal").style.display = "flex";
+
+    // Initialize main Swiper
+    if(swiper) swiper.destroy();
+    swiper = new Swiper(".mySwiper", {
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      loop: true,
+      effect: 'fade',
+      autoplay: { delay: 3500, disableOnInteraction: false },
+      on: { slideChange: () => setActiveThumb(swiper.realIndex) }
+    });
+
+    setActiveThumb(0);
+}
+
+// Close the modal entirely
+function closeModal(){
+    document.getElementById("projectModal").style.display = "none";
+}
+
+  function closeModal(){
+    document.getElementById("projectModal").style.display = "none";
+    const thumbs = document.querySelector('.modal-thumbs');
+    if(thumbs) thumbs.remove();
+  }
+
+  function thumbClick(i){
+    if(swiper) swiper.slideToLoop(i);
+  }
+
+  function setActiveThumb(i){
+    const thumbs = document.querySelectorAll('.modal-thumbs img');
+    thumbs.forEach(t=>t.classList.remove('active'));
+    if(thumbs[i]) thumbs[i].classList.add('active');
+
+    // Auto-scroll to make active thumb visible
+    const container = document.querySelector('.modal-thumbs');
+    if(container && thumbs[i]){
+      container.scrollLeft = thumbs[i].offsetLeft - container.clientWidth / 2 + thumbs[i].clientWidth / 2;
+    }
+  }
+</script>
+
+</body>
+</html>
